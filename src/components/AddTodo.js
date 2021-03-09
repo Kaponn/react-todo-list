@@ -14,7 +14,7 @@ const AddTodo = ({ saveTodo }) => {
   };
 
   return (
-    <React.Fragment className="item">
+    <React.Fragment>
       <form className="form" onSubmit={onSubmitHandler}>
         <input
           className="form"

@@ -14,14 +14,17 @@ const Todos = () => {
   };
 
   const removeAllDone = () => {
+    console.log(todos);
     let newTodos = todos.filter((todo) => todo.completed === false);
     setTodos(newTodos);
   };
 
   const toggleTodo = (id) => {
+    console.log(todos.length);
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
+          console.log(todo.id);
           todo.completed = !todo.completed;
         }
         return todo;
@@ -30,13 +33,14 @@ const Todos = () => {
   };
 
   const saveTodoHandler = (text) => {
+    const lastTodo = todos[todos.length - 1];
+    let id = todos.length < 1 ? 1 : lastTodo.id + 1;
     const trimmedText = text.trim();
-
     if (trimmedText.length > 0) {
       setTodos([
         ...todos,
         {
-          id: todos.length + 1,
+          id: id,
           name: text,
           completed: false,
         },
