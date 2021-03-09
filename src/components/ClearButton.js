@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ClearButton = ({ onClickHandler }) => {
+const ClearButton = ({ onClickHandler, name, buttonClassName }) => {
   return (
-    <button type="button" className="btn" onClick={onClickHandler}>
-      Clear All
+    <button type="button" className={buttonClassName} onClick={onClickHandler}>
+      {name}
     </button>
   );
 };

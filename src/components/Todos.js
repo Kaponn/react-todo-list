@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import AddTodo from './AddTodo';
 import ClearButton from './ClearButton';
-import RemoveButton from './RemoveButton';
 import ToggleCompleted from './ToggleCompleted';
 
 const Todos = () => {
@@ -11,6 +10,11 @@ const Todos = () => {
 
   const removeTodo = (id) => {
     let newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
+  const removeAllDone = () => {
+    let newTodos = todos.filter((todo) => todo.completed === false);
     setTodos(newTodos);
   };
 
@@ -51,11 +55,20 @@ const Todos = () => {
             <h4 style={{ textDecoration: completed ? 'line-through' : 'none' }}>
               {name}
             </h4>
-            <RemoveButton onClickHandler={() => removeTodo(id)} />
+            <ClearButton onClickHandler={() => removeTodo(id)} name="remove" />
           </div>
         );
       })}
-      <ClearButton onClickHandler={clearTodos} />
+      <ClearButton
+        buttonClassName="btn"
+        onClickHandler={clearTodos}
+        name="Clear All"
+      />
+      <ClearButton
+        buttonClassName="btn"
+        onClickHandler={removeAllDone}
+        name="Clear All Done"
+      />
     </React.Fragment>
   );
 };
