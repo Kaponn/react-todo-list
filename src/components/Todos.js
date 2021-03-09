@@ -14,17 +14,14 @@ const Todos = () => {
   };
 
   const removeAllDone = () => {
-    console.log(todos);
     let newTodos = todos.filter((todo) => todo.completed === false);
     setTodos(newTodos);
   };
 
   const toggleTodo = (id) => {
-    console.log(todos.length);
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
-          console.log(todo.id);
           todo.completed = !todo.completed;
         }
         return todo;
